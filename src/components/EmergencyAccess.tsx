@@ -133,11 +133,19 @@ const EmergencyAccess: React.FC = () => {
                 </div>
                 <p className="text-sm">{alert.message}</p>
                 <div className="mt-3 flex space-x-2">
-                  <button className="btn-secondary text-xs px-3 py-1">
-                    View Location
+                  <button 
+                    onClick={() => window.location.href = '/?focus=' + encodeURIComponent(alert.child)}
+                    className="btn-secondary text-xs px-3 py-1 flex items-center space-x-1"
+                  >
+                    <MapPin className="w-3 h-3" />
+                    <span>View Location</span>
                   </button>
-                  <button className="btn-secondary text-xs px-3 py-1">
-                    Contact Child
+                  <button 
+                    onClick={() => window.location.href = `tel:+27-82-${Math.floor(Math.random() * 900) + 100}-${Math.floor(Math.random() * 9000) + 1000}`}
+                    className="btn-secondary text-xs px-3 py-1 flex items-center space-x-1"
+                  >
+                    <Phone className="w-3 h-3" />
+                    <span>Contact Child</span>
                   </button>
                 </div>
               </div>

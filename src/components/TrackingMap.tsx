@@ -48,10 +48,10 @@ const TrackingMap: React.FC<TrackingMapProps> = ({
         map.current.remove();
       }
 
-      // Initialize map with dark theme for blockchain aesthetic
+      // Initialize map with light theme
       map.current = new mapboxgl.Map({
         container: mapContainer.current,
-        style: 'mapbox://styles/mapbox/dark-v11',
+        style: 'mapbox://styles/mapbox/light-v11',
         center: focusChild ? [focusChild.location.lng, focusChild.location.lat] : [18.4241, -33.9249], // Default to Cape Town
         zoom: focusChild ? 14 : 10,
         pitch: 0,
@@ -69,13 +69,13 @@ const TrackingMap: React.FC<TrackingMapProps> = ({
       map.current.on('style.load', () => {
         setIsMapLoaded(true);
         
-        // Add custom layer for glowing effects
+        // Add custom layer for light theme integration
         map.current?.addLayer({
-          id: 'background-glow',
+          id: 'background-overlay',
           type: 'background',
           paint: {
-            'background-color': 'hsl(220, 20%, 8%)',
-            'background-opacity': 0.8
+            'background-color': 'hsl(0, 0%, 98%)',
+            'background-opacity': 0.1
           }
         });
       });
@@ -126,15 +126,15 @@ const TrackingMap: React.FC<TrackingMapProps> = ({
         offset: 25,
         className: 'custom-popup'
       }).setHTML(`
-        <div class="p-4 bg-gray-900 text-white rounded-lg border border-gray-700">
+        <div class="p-4 bg-white text-gray-900 rounded-lg border border-gray-200 shadow-lg">
           <div class="flex items-center space-x-2 mb-2">
             <div class="w-3 h-3 rounded-full" style="background-color: ${statusColor};"></div>
             <h3 class="font-semibold">${child.name}</h3>
           </div>
-          <p class="text-sm text-gray-300 mb-1">Age: ${child.age}</p>
-          <p class="text-sm text-gray-300 mb-1">Battery: ${child.battery}%</p>
-          <p class="text-sm text-gray-300 mb-2">Last seen: ${child.lastSeen}</p>
-          <p class="text-xs text-gray-400">${child.location.address}</p>
+          <p class="text-sm text-gray-600 mb-1">Age: ${child.age}</p>
+          <p class="text-sm text-gray-600 mb-1">Battery: ${child.battery}%</p>
+          <p class="text-sm text-gray-600 mb-2">Last seen: ${child.lastSeen}</p>
+          <p class="text-xs text-gray-500">${child.location.address}</p>
         </div>
       `);
 
@@ -268,44 +268,46 @@ const TrackingMap: React.FC<TrackingMapProps> = ({
 const style = document.createElement('style');
 style.textContent = `
   .mapboxgl-popup-content {
-    background: hsl(220, 20%, 8%) !important;
-    border: 1px solid hsl(220, 20%, 20%) !important;
+    background: white !important;
+    border: 1px solid hsl(0, 0%, 90%) !important;
     border-radius: 0.75rem !important;
     padding: 0 !important;
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04) !important;
   }
   
   .mapboxgl-popup-anchor-top .mapboxgl-popup-tip,
   .mapboxgl-popup-anchor-top-left .mapboxgl-popup-tip,
   .mapboxgl-popup-anchor-top-right .mapboxgl-popup-tip {
-    border-bottom-color: hsl(220, 20%, 8%) !important;
+    border-bottom-color: white !important;
   }
   
   .mapboxgl-popup-anchor-bottom .mapboxgl-popup-tip,
   .mapboxgl-popup-anchor-bottom-left .mapboxgl-popup-tip,
   .mapboxgl-popup-anchor-bottom-right .mapboxgl-popup-tip {
-    border-top-color: hsl(220, 20%, 8%) !important;
+    border-top-color: white !important;
   }
   
   .mapboxgl-popup-anchor-left .mapboxgl-popup-tip {
-    border-right-color: hsl(220, 20%, 8%) !important;
+    border-right-color: white !important;
   }
   
   .mapboxgl-popup-anchor-right .mapboxgl-popup-tip {
-    border-left-color: hsl(220, 20%, 8%) !important;
+    border-left-color: white !important;
   }
   
   .mapboxgl-ctrl-group {
-    background: hsl(220, 20%, 15%) !important;
-    border: 1px solid hsl(220, 20%, 20%) !important;
+    background: white !important;
+    border: 1px solid hsl(0, 0%, 90%) !important;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1) !important;
   }
   
   .mapboxgl-ctrl button {
     background: transparent !important;
-    color: hsl(210, 40%, 98%) !important;
+    color: hsl(220, 10%, 20%) !important;
   }
   
   .mapboxgl-ctrl button:hover {
-    background: hsl(220, 20%, 20%) !important;
+    background: hsl(0, 0%, 95%) !important;
   }
 `;
 document.head.appendChild(style);
