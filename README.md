@@ -33,10 +33,15 @@ SanaGuard is a decentralized child safety tracking platform built for the BlockD
 ### Key Features
 
 🔐 **Blockchain Security**: All child data stored immutably on BlockDAG network
+
 📍 **Real-time Tracking**: Interactive Mapbox integration with light theme
+
 🚨 **Emergency Alerts**: Instant notifications to emergency contacts
+
 👥 **Multi-child Management**: Track multiple children from one dashboard
+
 📱 **Mobile Responsive**: Works seamlessly on all devices
+
 🔗 **Web3 Wallet Integration**: Connect via MetaMask for blockchain interactions
 
 ## 🚀 Getting Started
