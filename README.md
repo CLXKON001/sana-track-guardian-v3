@@ -204,7 +204,7 @@ Built for BlockDAG Hackathon 2024. Open source under MIT License.
 
 ---
 
-**Team**: [Your Team Name]
+**Team**: Team Sana
 **Demo**: [Link to live demo]
 **Video**: [Link to demo video]
 **Contracts**: [BlockDAG contract addresses]
