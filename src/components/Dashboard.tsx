@@ -5,6 +5,9 @@ import AddChildDialog from './AddChildDialog';
 import EmergencyAlertDialog from './EmergencyAlertDialog';
 import ExportDataDialog from './ExportDataDialog';
 import ChildDetailsDialog from './ChildDetailsDialog';
+import { useWallet } from 'src/hooks/useWallet';
+import { useContract } from 'src/hooks/useContract';
+import { CONTRACT_CONFIG } from 'src/lib/contract-config';
 
 interface Child {
   id: number;
