@@ -1,3 +1,6 @@
+// © 2026 Konke Cele. All Rights Reserved.
+// Project: SanaTrack Decentralized Child Safety
+// Role: Project Manager & Lead Developer
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
